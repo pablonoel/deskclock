@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACC,iBAAW;EACV,OAAO,EAAE,KAAK;EACd,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,SAAS;EAClB,UAAU,EAAE,GAAG",
+"sources": ["../sass/page_home.sass"],
+"names": [],
+"file": "page_home.css"
+}

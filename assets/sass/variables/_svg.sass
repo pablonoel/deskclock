@@ -1,0 +1,33 @@
+// ----------------------------------------------------------------------------
+// https://github.com/pablonoel/sass-svg-uri
+// ----------------------------------------------------------------------------
+
+@function svg-uri($svg)
+	$encoded: ''
+	$slice: 2000
+	$index: 0
+	$loops: ceil(str-length($svg) / $slice)
+	@for $i from 1 through $loops
+		$chunk: str-slice($svg, $index, $index + $slice - 1)
+		$chunk: str-replace($chunk, '"', "'")
+		$chunk: str-replace($chunk, '<', '%3C')
+		$chunk: str-replace($chunk, '>', '%3E')
+		$chunk: str-replace($chunk, '&', '%26')
+		$chunk: str-replace($chunk, '#', '%23')
+		$encoded: #{$encoded}#{$chunk}
+		$index: $index + $slice
+	@return url("data:image/svg+xml;utf8,#{$encoded}")
+
+@function str-replace($string, $search, $replace: '')
+	$index: str-index($string, $search)
+	@if $index 
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+	@return $string
+
+
+// Images
+@mixin shape_puzzle($color)
+	background-image: svg-uri('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="140" viewBox="0 0 200 140"><path fill="#{$color}" d="M161.777,38.552A38.391,38.391,0,0,1,200,0H0A38.391,38.391,0,0,1,38.223,38.552h.045V40a118.462,118.462,0,0,1-1.974,22.172,65.625,65.625,0,0,0-1.166,13.665C35.8,111.221,64.6,139.863,99.686,140c35.98.181,65.186-29.185,65.186-65.429a68.4,68.4,0,0,0-1.032-11.81,125.535,125.535,0,0,1-2.109-22.036V38.507h.045Z"/></svg>')
+	background-position: center center
+	background-repeat: no-repeat
+	background-size: 100% 100%
