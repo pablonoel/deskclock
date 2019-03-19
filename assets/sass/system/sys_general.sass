@@ -2,76 +2,26 @@
 // General Styling
 // ----------------------------------------------------------------------------
 
-=link_content
-	color: $color-basic-blue_link
-	text-decoration: none
-
-=link_follow
-	color: $color-basic-blue_link
-	text-decoration: none
-	font-weight: 400
-	&:after
-		content: '\02192'
-		display: inline-block
-		margin-left: 10px
-		font-size: 1.2em
-		font-weight: 900
-	&:hover
-		text-decoration: underline
-=link_back
-	+link_follow
-	&:after
-		display: none
-	&:before
-		content: '\02190'
-		margin-right: 10px
-
 body
 	+reset
-	+font_body
+	font-family: 'helvetica', Arial, Sans-Serif
 	font-size : 76%
 	overflow-x: hidden
 	transition: all .5s ease
 	background-color: #F5F5F5
-	&.disabled
-		position: absolute
-		right: 0
-		left: 0
-		overflow: hidden
 
 h1,h2,h3,h4,h5,h6, p, ul, ol, a img
 	+reset
 
 h1,h2,h3,h4,h5,h6
 	a
-		+link_content
+		color: blue
+		text-decoration: none
 
 p, li
 	font-weight: 300
 	a
-		+link_content
+		color: blue
+		text-decoration: none
 	strong
 		font-weight: 900
-
-figure
-	+reset
-	img
-		+reset
-		display: block
-		width: 100%
-		height: auto
-
-blockquote
-	line-height: 1.8em
-	font-size: 1.6em
-	font-weight: 100
-	margin-bottom: 30px
-	padding: 0 0 0 20px
-	small
-		display: block
-	cite
-		display: block
-		font-size: 1rem
-		text-align: right
-.player
-	+ratio
